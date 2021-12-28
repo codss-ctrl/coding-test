@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# 람다와 + 연산자를 이용
 class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
         letters, digits = [], []
