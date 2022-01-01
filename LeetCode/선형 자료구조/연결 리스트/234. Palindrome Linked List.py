@@ -51,16 +51,23 @@ class Solution:
 # 런너(Runner)를 이용한 풀이
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        rev = None
-        slow = fast = head
+        rev = None # rev : 역순 연결 리스트
+        slow = fast = head # 모두 head에서 시작
         # 런너를 이용해 역순 연결 리스트 구성
         while fast and fast.next:
-            fast = fast.next.next
-            rev, rev.next, slow = slow, rev, slow.next
+            fast = fast.next.next # 빠른 런너는 2칸씩
+            rev, rev.next, slow = slow, rev, slow.next # 느린 런너는 1칸씩 이동
+            # rev는 None에서 시작하고, 런너가 이동하면서 1->None, 2->1->None로 점점 이전 값으로 연결되는 구조
+            # 현재 값을 slow로 교체하고, rev.next는 rev가 됨. -> 앞에 계속 새로운 노드가 추가되는 형태
+
+        # 입력값이 홀수 일 때 중앙에 위치한 값이 팰린드롬 체크에서 배제되어야 하기 때문. -> fast가 아직 None이 아니라는 경우로 간주할 수 있다.
         if fast:
-            slow = slow.next
+            slow = slow.next  # -> slow를 한 칸 더 이동해 마무리
+
 
         # 팰린드롬 여부 확인
-        while rev and rev.val == slow.val:
-            slow, rev = slow.next, rev.next
-        return not rev
+        while rev and rev.val == slow.val:  # 역순으로 만든 연결 리스트 rev 반복
+            slow, rev = slow.next, rev.next  # slow의 나머지 이동 경로와 역순으로 만든 rev의 노드를 하나씩 풀어가면서 비교
+            # 정상적으로 비교가 종료됐다면 slow와 rev가 모두 끝까지 이동해 둘 다 None이 된다.
+
+        return not rev  # 최종결과는 return not rev 또는 return not slow
