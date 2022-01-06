@@ -13,7 +13,7 @@ class Solution:
             # 자신부터 하위 원소까지의 나열 재귀 호출
             for i in range(index, len(candidates)):
                 dfs(csum - candidates[i], i, path + [candidates[i]]) # 조합
-                # dfs(csum - candidates[i], i, path + [candidates[0]]) # 순열
+                # dfs(csum - candidates[i], 0, path + [candidates[i]]) # 순열
 
 
         dfs(target,0,[])
