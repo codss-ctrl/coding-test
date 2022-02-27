@@ -1,6 +1,6 @@
 # 브루트 포스로 계산
 import collections
-
+from typing import List
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
@@ -41,7 +41,7 @@ class Solution:
 # 테스트 케이스 변경으로 위 두개는 타임 오류
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        deq, ans = deque(), []
+        deq, ans = collections.deque(), []
 
         for i in range(len(nums)):
             # 앞에서부터 out of window -> 제거
