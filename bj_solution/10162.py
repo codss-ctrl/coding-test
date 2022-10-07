@@ -1,6 +1,5 @@
 t = int(input())
 a=b=c=d=n = 0
-
 a = t //300
 n = t % 300
 
