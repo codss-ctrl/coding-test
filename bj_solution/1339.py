@@ -2,10 +2,8 @@ import collections
 import sys
 N = int(sys.stdin.readline())
 
-res = 0
 strs = []
 nums = []
-kind = set()
 dic = collections.defaultdict(int)
 for _ in range(N):
     strs.append(sys.stdin.readline().strip())
